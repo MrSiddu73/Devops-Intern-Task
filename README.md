@@ -62,7 +62,7 @@ Good luck!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# DevOps Internship Assignment – Django Deployment
+# DevOps Internship Assignment by Siddu Nyamagoud – Django Deployment
 
 This repository contains my solution for the DevOps Internship Assignment.  
 The task involved containerizing a Django REST application, setting up a CI pipeline, and deploying it to a cloud platform.
@@ -161,3 +161,4 @@ The focus of this assignment was not application development, but **deployment, 
 [https://devops-intern-task-1-jp0v.onrender.com/api/hello/](https://devops-intern-task-1-jp0v.onrender.com/api/hello/)
 
 ```
+(but this URL is not working, i didn't get the correct url where i can see the Application)
