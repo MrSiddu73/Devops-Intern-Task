@@ -58,3 +58,106 @@ The project is a simple API with a single endpoint `/api/hello/` that returns a 
 -   A brief text file or markdown document explaining your approach.
 
 Good luck!
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# DevOps Internship Assignment – Django Deployment
+
+This repository contains my solution for the DevOps Internship Assignment.  
+The task involved containerizing a Django REST application, setting up a CI pipeline, and deploying it to a cloud platform.
+
+---
+
+## Overview
+
+The application is a simple Django REST API with one endpoint:
+
+```
+
+/api/hello/
+
+```
+
+It returns a message stored in the database.
+
+The focus of this assignment was not application development, but **deployment, CI/CD, and environment configuration**.
+
+---
+
+## Changes Made & Files Created
+
+### 1. Dockerization
+
+**Files created/updated:**
+- `Dockerfile`
+- `docker-compose.yml`
+
+**What I did:**
+- Created a Dockerfile using `python:3.11-slim`
+- Installed dependencies from `requirements.txt`
+- Used Gunicorn as the production server
+- Collected static files during the build
+- Used Docker Compose to run Django and Nginx together locally
+
+---
+
+### 2. Nginx Reverse Proxy
+
+**Files created:**
+- `nginx/nginx.conf`
+
+**What I did:**
+- Configured Nginx as a reverse proxy
+- Forwarded requests to the Django app running on Gunicorn
+- Served static files through Nginx instead of Django
+
+---
+
+### 3. Environment Configuration
+
+**Files involved:**
+- `.env` (local only)
+- Render environment variables
+
+**What I did:**
+- Used environment variables for `SECRET_KEY`, `DEBUG`, and `ALLOWED_HOSTS`
+- Ensured secrets are NOT hardcoded in the image
+- Added a fallback `SECRET_KEY` in `settings.py` only for CI test execution
+
+---
+
+### 4. CI/CD Pipeline (GitHub Actions)
+
+**Files created:**
+- `.github/workflows/deploy.yml`
+
+**Pipeline steps:**
+- Checkout code
+- Set up Python 3.11
+- Install dependencies
+- Run `flake8` for linting
+- Run Django tests
+- Build Docker image
+
+**Fixes applied:**
+- Installed flake8 explicitly in CI
+- Adjusted linting rules to avoid non-critical failures
+- Fixed test failures caused by missing environment variables
+
+---
+
+### 5. Cloud Deployment (Render)
+
+**What I did:**
+- Deployed the app using Render’s Docker runtime
+- Set the start command using Gunicorn
+- Configured environment variables in Render dashboard
+- Verified deployment using the live API endpoint
+
+**Live URL:**
+```
+
+[https://devops-intern-task-1-jp0v.onrender.com/api/hello/](https://devops-intern-task-1-jp0v.onrender.com/api/hello/)
+
+```
